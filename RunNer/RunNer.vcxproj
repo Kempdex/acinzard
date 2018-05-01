@@ -137,16 +137,20 @@
     <ClInclude Include="core\engine\events\event_dispatcher.h" />
     <ClInclude Include="core\engine\events\_event.h" />
     <ClInclude Include="core\renderer\shader.h" />
+    <ClInclude Include="core\renderer\texture.h" />
+    <ClInclude Include="core\util\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\engine\engine_module.cpp" />
     <ClCompile Include="core\engine\events\event_dispatcher.cpp" />
     <ClCompile Include="core\glad\glad.c" />
+    <ClCompile Include="core\util\stb_image.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="core\renderer\renderer.cpp" />
     <ClCompile Include="core\renderer\window.cpp" />
     <ClCompile Include="core\engine\events\_event.cpp" />
     <ClCompile Include="core\renderer\shader.cpp" />
+    <ClCompile Include="core\renderer\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\main.f" />

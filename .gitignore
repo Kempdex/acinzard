@@ -264,3 +264,7 @@ __pycache__/
 /RunNer/core/KHR
 /RunNer/core/GLFW
 /RunNer/lib
+/RunNer/res/player.jpg
+*.jpg
+/RunNer/core/util/stb_image.cpp
+/RunNer/core/util/stb_image.h

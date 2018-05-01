@@ -82,6 +82,21 @@ GLFWwindow * core::window::get_window_ptr()
 	return this->window_ptr;
 }
 
+uint32_t core::window::get_width() const
+{
+	return this->width;
+}
+
+uint32_t core::window::get_height() const
+{
+	return this->height;
+}
+
+std::string core::window::get_title() const
+{
+	return this->title;
+}
+
 
 
 void window::key_event_listener(int key, int scancode, int action, int mods)

@@ -18,13 +18,13 @@ shader::shader(const char * vertex_path, const char * fragment_path)
 	check_compile_status(vertex_shader, GL_VERTEX_SHADER);
 	check_compile_status(fragment_shader, GL_FRAGMENT_SHADER);
 
-	shader_program = glCreateProgram();
-	glAttachShader(shader_program, vertex_shader);
-	glAttachShader(shader_program, fragment_shader);
+	id = glCreateProgram();
+	glAttachShader(id, vertex_shader);
+	glAttachShader(id, fragment_shader);
 
-	glLinkProgram(shader_program);
+	glLinkProgram(id);
 
-	check_link_status(shader_program);
+	check_link_status(id);
 
 	glDeleteShader(vertex_shader);
 	glDeleteShader(fragment_shader);
@@ -47,14 +47,14 @@ shader::shader(const char* vertex_path, const char* fragment_path, const char* g
 	check_compile_status(fragment_shader, GL_FRAGMENT_SHADER);
 	check_compile_status(geometry_shader, GL_GEOMETRY_SHADER);
 
-	shader_program = glCreateProgram();
-	glAttachShader(shader_program, vertex_shader);
-	glAttachShader(shader_program, fragment_shader);
-	glAttachShader(shader_program, geometry_shader);
+	id = glCreateProgram();
+	glAttachShader(id, vertex_shader);
+	glAttachShader(id, fragment_shader);
+	glAttachShader(id, geometry_shader);
 
-	glLinkProgram(shader_program);
+	glLinkProgram(id);
 
-	check_link_status(shader_program);
+	check_link_status(id);
 
 	glDeleteShader(vertex_shader);
 	glDeleteShader(fragment_shader);
@@ -67,9 +67,39 @@ shader::~shader()
 	//
 }
 
-void shader::use()
+void shader::use() const
 {
-	glUseProgram(shader_program);
+	glUseProgram(id);
+}
+
+void core::shader::set_bool(const char * name, bool value) const
+{
+	glUniform1i(glGetUniformLocation(this->id, name), (int)value);
+}
+
+void shader::set_int(const char* name, GLint value) const
+{
+	glUniform1i(glGetUniformLocation(this->id, name), value);
+}
+
+void core::shader::set_float(const char * name, GLfloat value) const
+{
+	glUniform1f(glGetUniformLocation(this->id, name), value);
+}
+
+void core::shader::set_vec2(const char * name, glm::vec2 value) const
+{
+	glUniform2f(glGetUniformLocation(this->id, name), value.x, value.y);
+}
+
+void core::shader::set_vec3(const char * name, glm::vec3 value) const
+{
+	glUniform3f(glGetUniformLocation(this->id, name), value.x, value.y, value.z);
+}
+
+void core::shader::set_mat4(const char * name, glm::mat4 value) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(this->id, name), 1, GL_FALSE, &value[0][0]);
 }
 
 
@@ -82,7 +112,7 @@ GLint shader::compile(GLint shader_type, const char* shader_source)
 	return shader;
 }
 
-void shader::check_compile_status(GLint shader, GLint shader_type)
+void shader::check_compile_status(GLint shader, GLint shader_type) const
 {
 	GLint success;
 	char info_log[1024];
@@ -101,7 +131,7 @@ void shader::check_compile_status(GLint shader, GLint shader_type)
 	}
 }
 
-void shader::check_link_status(GLint program)
+void shader::check_link_status(GLint program) const
 {
 	GLint success;
 	char info_log[1024];

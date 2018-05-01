@@ -32,6 +32,9 @@ namespace core {
 		virtual void handle_event(_event ev);
 
 		GLFWwindow* get_window_ptr();
+		uint32_t get_width() const;
+		uint32_t get_height() const;
+		std::string get_title() const;
 	};
 
 }
