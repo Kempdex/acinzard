@@ -69,7 +69,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)RunNer\core;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)RunNer\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)RunNer\core;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)RunNer\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +84,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -98,6 +108,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -115,6 +126,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="core\engine\events\_event_type.h" />
+    <ClInclude Include="core\glad\glad.h" />
+    <ClInclude Include="core\GLFW\glfw3.h" />
+    <ClInclude Include="core\GLFW\glfw3native.h" />
+    <ClInclude Include="core\KHR\khrplatform.h" />
+    <ClInclude Include="core\renderer\renderer.h" />
+    <ClInclude Include="core\renderer\window.h" />
+    <ClInclude Include="core\engine\engine_module.h" />
+    <ClInclude Include="core\engine\events\event_dispatcher.h" />
+    <ClInclude Include="core\engine\events\_event.h" />
+    <ClInclude Include="core\renderer\shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core\engine\engine_module.cpp" />
+    <ClCompile Include="core\engine\events\event_dispatcher.cpp" />
+    <ClCompile Include="core\glad\glad.c" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="core\renderer\renderer.cpp" />
+    <ClCompile Include="core\renderer\window.cpp" />
+    <ClCompile Include="core\engine\events\_event.cpp" />
+    <ClCompile Include="core\renderer\shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\main.f" />
+    <None Include="res\shaders\main.v" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
