@@ -2,9 +2,8 @@
 
 using namespace core;
 
-_event::_event(_event_type _type)
+_event::_event()
 {
-	this->type = _type;
 }
 
 _event_type core::_event::get_type()

@@ -10,9 +10,9 @@ namespace core {
 		engine_module();
 		virtual ~engine_module();
 
-		virtual void raise_event(_event ev);
+		virtual void raise_event(_event* ev);
 		virtual void start_listen_events_of_type(_event_type _type);
-		virtual void handle_event(_event ev) = 0;
+		virtual void handle_event(_event* ev) = 0;
 	};
 
 }

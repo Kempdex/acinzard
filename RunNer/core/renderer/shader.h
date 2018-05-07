@@ -6,6 +6,7 @@
 #include <ostream>
 #include <fstream>
 #include <sstream>
+#include <util/logger.h>
 
 namespace core {
 	class shader

@@ -49,7 +49,8 @@ core::window::window(std::string _title, uint32_t _width, uint32_t _height, bool
 
 	glfwSetWindowUserPointer(window_ptr, this);
 	glfwSetKeyCallback(window_ptr, key_callback);
-	//glfwSetFramebufferSizeCallback(window_ptr, framebuffer_resize_callback);
+	glfwSetFramebufferSizeCallback(window_ptr, framebuffer_resize_callback);
+	glfwSetCursorPosCallback(window_ptr, cursor_position_callback);
 
 	glViewport(0, 0, width, height);
 }
@@ -61,10 +62,21 @@ window::~window()
 
 void window::key_callback(GLFWwindow * win, int key, int scancode, int action, int mods)
 {
+	//Get window object from static method
 	void *data = glfwGetWindowUserPointer(win);
 	window *w = static_cast<window*>(data);
 
 	w->key_event_listener(key, scancode, action, mods);
+}
+
+void core::window::cursor_position_callback(GLFWwindow * win, double xpos, double ypos)
+{
+	//Get window object from static method
+	void* data = glfwGetWindowUserPointer(win);
+	window *w = static_cast<window*>(data);
+
+	_event *ev = new mouse_event(xpos, ypos);
+	w->raise_event(ev);
 }
 
 void window::framebuffer_resize_callback(GLFWwindow * win, int width, int height)
@@ -72,7 +84,7 @@ void window::framebuffer_resize_callback(GLFWwindow * win, int width, int height
 	glViewport(0, 0, width, height);
 }
 
-void core::window::handle_event(_event ev)
+void core::window::handle_event(_event* ev)
 {
 
 }

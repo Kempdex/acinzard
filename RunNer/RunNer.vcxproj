@@ -23,6 +23,7 @@
     <ProjectGuid>{BF8AAA84-85B9-4F21-9A00-575291512BB5}</ProjectGuid>
     <RootNamespace>RunNer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>Acinzard</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)RunNer\core;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)RunNer\acinzard;$(SolutionDir)RunNer\core;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)RunNer\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)RunNer\core;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)RunNer\acinzard;$(SolutionDir)RunNer\core;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)RunNer\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -126,6 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="acinzard\ecs\component\component.h" />
+    <ClInclude Include="acinzard\ecs\component\components.h" />
+    <ClInclude Include="acinzard\ecs\component\component_type.h" />
+    <ClInclude Include="core\renderer\camera.h" />
     <ClInclude Include="core\engine\events\_event_type.h" />
     <ClInclude Include="core\glad\glad.h" />
     <ClInclude Include="core\GLFW\glfw3.h" />
@@ -139,18 +144,29 @@
     <ClInclude Include="core\renderer\shader.h" />
     <ClInclude Include="core\renderer\texture.h" />
     <ClInclude Include="core\util\stb_image.h" />
+    <ClInclude Include="core\util\logger.h" />
+    <ClInclude Include="core\engine\events\mouse_event.h" />
+    <ClInclude Include="acinzard\ecs\entity\entity.h" />
+    <ClInclude Include="acinzard\ecs\component\components\transform.h" />
+    <ClInclude Include="acinzard\ecs\component\components\sprite.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\renderer\camera.cpp" />
     <ClCompile Include="core\engine\engine_module.cpp" />
     <ClCompile Include="core\engine\events\event_dispatcher.cpp" />
     <ClCompile Include="core\glad\glad.c" />
     <ClCompile Include="core\util\stb_image.cpp" />
+    <ClCompile Include="core\util\logger.cpp" />
+    <ClCompile Include="acinzard\ecs\entity\entity.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="core\renderer\renderer.cpp" />
     <ClCompile Include="core\renderer\window.cpp" />
     <ClCompile Include="core\engine\events\_event.cpp" />
     <ClCompile Include="core\renderer\shader.cpp" />
     <ClCompile Include="core\renderer\texture.cpp" />
+    <ClCompile Include="core\engine\events\mouse_event.cpp" />
+    <ClCompile Include="acinzard\ecs\component\components\transform.cpp" />
+    <ClCompile Include="acinzard\ecs\component\components\sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\main.f" />

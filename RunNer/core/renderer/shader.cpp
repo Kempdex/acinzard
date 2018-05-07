@@ -120,13 +120,13 @@ void shader::check_compile_status(GLint shader, GLint shader_type) const
 	if (!success) {
 		glGetShaderInfoLog(shader, 512, NULL, info_log);
 		if (shader_type == GL_VERTEX_SHADER) {
-			printf("ERROR: VERTEX_SHADER_COMPILE :: %s", info_log);//Logger 
+			core::logger::error("VERTEX_SHADER_COMPILE ::", info_log);
 		}
 		else if (shader_type == GL_FRAGMENT_SHADER) {
-			printf("ERROR: FRAGMENT_SHADER_COMPILE :: %s", info_log); //Logger
+			core::logger::error("FRAGMENT_SHADER_COMPILER :: ", info_log);
 		}
 		else if (shader_type == GL_GEOMETRY_SHADER) {
-			printf("ERROR: GEOMETRY_SHADER_COMPILE :: %s", info_log);//Logger
+			core::logger::error("GEOMETRY_SHADER_COMPILE :: ", info_log);
 		}
 	}
 }

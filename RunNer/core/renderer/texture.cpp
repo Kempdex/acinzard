@@ -21,7 +21,7 @@ texture::texture(const char * path)
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else {
-		printf("Failed to load texture from path - %s\n", path);
+		core::logger::error("Failed to load texture from path", path);
 	}
 	stbi_image_free(image);
 }
@@ -46,7 +46,7 @@ texture::texture(const char * path, GLint _texture_wrap_s, GLint _texture_wrap_t
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else {
-		printf("Failed to load texture from path - %s\n", path);
+		core::logger::error("Failed to load texture from path", path);
 	}
 	stbi_image_free(image);
 }

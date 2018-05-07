@@ -1,6 +1,7 @@
 #pragma once
 #include <glad/glad.h>
 #include <util/stb_image.h>
+#include <util/logger.h>
 
 namespace core {
 	class texture

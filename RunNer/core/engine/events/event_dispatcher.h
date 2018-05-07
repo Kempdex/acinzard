@@ -18,7 +18,7 @@ namespace core {
 		static std::map< _event_type, modules > _listeners;
 	public:
 		
-		static void handle_event(_event ev);
+		static void handle_event(_event* ev);
 
 		static void subscribe_on_events(_event_type _type, engine_module* _module);
 	};

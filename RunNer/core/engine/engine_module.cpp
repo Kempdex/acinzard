@@ -12,7 +12,7 @@ engine_module::~engine_module()
 {
 }
 
-void engine_module::raise_event(_event ev)
+void engine_module::raise_event(_event* ev)
 {
 	event_dispatcher::handle_event(ev);
 }

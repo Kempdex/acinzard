@@ -3,7 +3,10 @@
 #include <string>
 #include <engine/engine_module.h>
 #include <GLFW/glfw3.h>
+#include <util/logger.h>
 #include <stdio.h>
+
+#include <engine/events/mouse_event.h>
 
 #define DEFAULT_SCREEN_WIDTH 800
 #define DEFAULT_SCREEN_HEIGHT 600
@@ -20,7 +23,8 @@ namespace core {
 
 		void key_event_listener(int key, int scancode, int action, int mods);
 		static void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods);
-		void framebuffer_resize_callback(GLFWwindow *win, int width, int height);
+		static void cursor_position_callback(GLFWwindow *win, double xpos, double ypos);
+		static void framebuffer_resize_callback(GLFWwindow *win, int width, int height);
 
 	public:
 		window();
@@ -29,7 +33,7 @@ namespace core {
 		~window();
 
 		
-		virtual void handle_event(_event ev);
+		virtual void handle_event(_event* ev);
 
 		GLFWwindow* get_window_ptr();
 		uint32_t get_width() const;

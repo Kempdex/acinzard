@@ -14,7 +14,7 @@ renderer::~renderer()
 	glDeleteBuffers(1, &this->box_VBO);
 }
 
-void renderer::init_renderer()
+void renderer::init_renderer(window *win)
 {
 	glGenVertexArrays(1, &this->VAO);
 	glGenBuffers(1, &this->box_VBO);
@@ -22,7 +22,7 @@ void renderer::init_renderer()
 	glBindVertexArray(VAO);
 
 	GLfloat box_vertices[] = {
-		//Position           //Color              //Texture
+		 //Position           //Color              //Texture
 		 1.0f,  1.0f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
 		 1.0f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
 		-1.0f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
@@ -41,6 +41,11 @@ void renderer::init_renderer()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
+
+	_window = win;
+
+	projection = glm::mat4(1.0f);
+	projection = glm::ortho(0.0f, (float)_window->get_width(), 0.0f, (float)_window->get_height(), 0.0f, 10.0f);
 }
 
 void renderer::clear_screen(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
@@ -54,7 +59,12 @@ void renderer::draw_object()
 
 }
 
-void renderer::handle_event(_event ev)
+glm::mat4 core::renderer::get_projection() const
+{
+	return this->projection;
+}
+
+void renderer::handle_event(_event* ev)
 {
 	//No imp
 }
