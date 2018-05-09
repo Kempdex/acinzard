@@ -11,7 +11,7 @@ namespace acinzard {
 	public:
 		transform();
 		~transform();
-		glm::mat4 get_model();
+		glm::mat4 get_model() const;
 		void translate(glm::vec3 vec);
 		void scale(glm::vec3 vec);
 		void rotate(glm::vec3 vec, float angle);

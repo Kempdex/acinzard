@@ -81,6 +81,9 @@
     <ClInclude Include="acinzard\ecs\component\components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="core\input\input_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -131,9 +134,14 @@
     <ClCompile Include="acinzard\ecs\component\components\sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="core\input\input_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\main.v" />
     <None Include="res\shaders\main.f" />
+    <None Include="res\shaders\text.f" />
+    <None Include="res\shaders\text.v" />
   </ItemGroup>
 </Project>

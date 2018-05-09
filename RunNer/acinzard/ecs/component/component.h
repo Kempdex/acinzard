@@ -3,17 +3,13 @@
 #include <stdint.h>
 #include <cstdio>
 
-
 namespace acinzard {
-	class entity;
-
 	class component
 	{
 	protected:
 
 	public:
 		component() {}
-		entity* _entity;
 		
 		virtual void update() {}
 		virtual ~component() {}

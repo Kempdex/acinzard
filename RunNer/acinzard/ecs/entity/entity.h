@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <ecs/component/component.h>
 #include <vector>
 #include <memory>
@@ -10,7 +10,9 @@
 #define MAX_COMPONENTS 64
 
 
+
 namespace acinzard {
+
 	class entity
 	{
 		std::vector<std::unique_ptr<component>> components;
@@ -32,13 +34,17 @@ namespace acinzard {
 		}
 
 		void update() {
-
+			//Не нравится мне эта конструкция
+			//Но она работает
+			//TODO: Переделать цикл перебора компонентов в классе entity
+			for (auto item = components.begin(); item != components.end(); item++) {
+				(*item)->update();
+			}
 		}
 
 		template<typename T, typename... TArgs>
 		T& add_component(TArgs&&... mArgs) {
 			T* _component(new T(std::forward<TArgs>(mArgs)...));
-
 			std::unique_ptr<component> u_component_ptr{ _component };
 			components.emplace_back(std::move(u_component_ptr));
 

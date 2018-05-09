@@ -7,12 +7,11 @@ transform::transform()
 	model = glm::mat4(1.0f);
 }
 
-
 transform::~transform()
 {
 }
 
-glm::mat4 acinzard::transform::get_model()
+glm::mat4 transform::get_model() const
 {
 	return this->model;
 }

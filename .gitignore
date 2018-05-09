@@ -268,3 +268,6 @@ __pycache__/
 *.jpg
 /RunNer/core/util/stb_image.cpp
 /RunNer/core/util/stb_image.h
+/RunNer/core/freetype
+/RunNer/core/ft2build.h
+/RunNer/res
