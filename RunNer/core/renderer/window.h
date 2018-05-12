@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #include <engine/events/mouse_event.h>
+#include <engine/events/keyboard_event.h>
 
 #define DEFAULT_SCREEN_WIDTH 800
 #define DEFAULT_SCREEN_HEIGHT 600

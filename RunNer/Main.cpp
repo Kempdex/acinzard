@@ -47,7 +47,7 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window *win = new window("RunNer", 800, 600, false);
+	window *win = new window("Acinzard", 800, 600, false);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		logger::warning("Failed to initialize GLAD");
@@ -74,8 +74,8 @@ int main() {
 
 	//
 	input_manager* in_man = new input_manager();
-	//in_man->start_listen_events_of_type(EV_MOUSE);
-	//in_man->start_listen_events_of_type(EV_KEYBOARD);
+	in_man->start_listen_events_of_type(EV_MOUSE);
+	in_man->start_listen_events_of_type(EV_KEYBOARD);
 
 	entity *ent = new entity();
 	ent->add_component<transform>();
@@ -99,7 +99,7 @@ int main() {
 		double current_time = glfwGetTime();
 		delta_time = current_time - last_frame;
 		last_frame = current_time;
-		glfwSetWindowTitle(win->get_window_ptr(), std::to_string(delta_time).c_str());
+		
 
 		_renderer->clear_screen(0.1f, 0.1f, 0.1f, 1.0f);
 
@@ -108,7 +108,7 @@ int main() {
 		//Debug information
 		_renderer->draw_text(NULL, std::to_string(delta_time), 25.0f, win->get_height() - 25.0f, 0.5f, glm::vec3(1.0f, 1.0f, 1.0f));
 		_renderer->draw_text(NULL, "This is test text", 500.0f, 500.0f, 0.6f, glm::vec3(0.5f, 0.8f, 0.2f));
-		_renderer->draw_text(NULL, "COCK", 300.0f, 300.0f, 4.0f, glm::vec3(1.0f, 0.5f, 0.0f));
+		_renderer->draw_text(NULL, "Acinzard test", 500.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.5f, 0.0f));
 
 		glfwSwapBuffers(win->get_window_ptr());
 		glfwPollEvents();

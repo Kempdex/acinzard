@@ -130,6 +130,7 @@
     <ClInclude Include="acinzard\ecs\component\component.h" />
     <ClInclude Include="acinzard\ecs\component\components.h" />
     <ClInclude Include="acinzard\ecs\component\component_type.h" />
+    <ClInclude Include="acinzard\ecs\component\components\actor_control.h" />
     <ClInclude Include="core\renderer\camera.h" />
     <ClInclude Include="core\engine\events\_event_type.h" />
     <ClInclude Include="core\glad\glad.h" />
@@ -150,8 +151,10 @@
     <ClInclude Include="acinzard\ecs\component\components\transform.h" />
     <ClInclude Include="acinzard\ecs\component\components\sprite.h" />
     <ClInclude Include="core\input\input_manager.h" />
+    <ClInclude Include="core\engine\events\keyboard_event.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="acinzard\ecs\component\components\actor_control.cpp" />
     <ClCompile Include="core\renderer\camera.cpp" />
     <ClCompile Include="core\engine\engine_module.cpp" />
     <ClCompile Include="core\engine\events\event_dispatcher.cpp" />
@@ -160,6 +163,7 @@
     <ClCompile Include="core\util\logger.cpp" />
     <ClCompile Include="acinzard\ecs\entity\entity.cpp" />
     <ClCompile Include="core\input\input_manager.cpp" />
+    <ClCompile Include="core\engine\events\keyboard_event.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="core\renderer\renderer.cpp" />
     <ClCompile Include="core\renderer\window.cpp" />

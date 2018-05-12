@@ -65,11 +65,13 @@ void window::key_callback(GLFWwindow * win, int key, int scancode, int action, i
 	//Get window object from static method
 	void *data = glfwGetWindowUserPointer(win);
 	window *w = static_cast<window*>(data);
-
+	
+	_event *ev = new keyboard_event(key, scancode, action, mods);
+	w->raise_event(ev);
 	w->key_event_listener(key, scancode, action, mods);
 }
 
-void core::window::cursor_position_callback(GLFWwindow * win, double xpos, double ypos)
+void window::cursor_position_callback(GLFWwindow * win, double xpos, double ypos)
 {
 	//Get window object from static method
 	void* data = glfwGetWindowUserPointer(win);
@@ -109,15 +111,8 @@ std::string core::window::get_title() const
 	return this->title;
 }
 
-
-
 void window::key_event_listener(int key, int scancode, int action, int mods)
 {
-	if (key == GLFW_KEY_E && action == GLFW_PRESS) {
-		printf("Key e was pressed");
-	}
+	
 
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-		glfwSetWindowShouldClose(window_ptr, true);
-	}
 }

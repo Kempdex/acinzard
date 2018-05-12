@@ -1,0 +1,11 @@
+﻿/RunNer/Debug
+/RunNer/res/fonts
+/RunNer/res/player.jpg
+/RunNer/res/wall.jpg
+/.vs/RunNer/v15
+/Debug
+/RunNer/core/freetype
+/RunNer/core/glad
+/RunNer/core/GLFW
+/RunNer/core/glm
+/RunNer/RunNer.vcxproj.user
